@@ -12,7 +12,9 @@ G.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,8\6\86
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 Å
 Q.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,2\c\2cabb939da04d3de3a200bf2b575690e1a16316d
-R
-"src/main/java/org/example/App.java,2\6\268b09d2a5cdab7d148f0ec91f7b3fb51601410d
 V
 &src/test/java/org/example/AppTest.java,4\3\438c56474209176629917f1aaaac4e1cf31f765e
+S
+#src/main/java/CalculatorWindow.java,d\2\d210bae26fe8cadc4fd17b59399312933473bdcb
+N
+src/main/java/ButtonPanel.java,d\7\d79bf84d120059aac3c57edc56e46f343b8e2a20
