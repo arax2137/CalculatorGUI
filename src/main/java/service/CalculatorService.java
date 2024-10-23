@@ -19,6 +19,22 @@ public class CalculatorService {
 
     }
 
+    public void deleteFromCurrent(){
+        if (current.contains(".")) {
+            if (current.charAt(current.length() - 2) == '.') {
+                current = current.substring(0, current.length() - 2);
+            } else {
+                current = current.substring(0, current.length() - 1);
+            }
+        } else {
+            current = current.substring(0, current.length() - 1);
+        }
+
+        if(current.equals("")){
+            current = "0";
+        }
+    }
+
     public void equals() {
         double resultDouble = Double.parseDouble(result);
         if (!current.isEmpty()) {
@@ -48,11 +64,17 @@ public class CalculatorService {
         current = "";
     }
 
-    public void clear(){
+    public void clearAll(){
         result = "0";
         current = "0";
         operator = '+';
     }
+
+    public void clearEntry(){
+        current = "0";
+    }
+
+
 
     public void changeSigns(){
         equals();

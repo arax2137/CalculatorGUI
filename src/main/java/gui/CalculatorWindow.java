@@ -55,12 +55,22 @@ public class CalculatorWindow extends JFrame {
             } else if (c.charAt(0)=='=') {
                 calc.equals();
                 display.updateDisplay(calc.getResult());
-            } else if (c.equals("CE")) {
-                calc.clear();
+            } else if (c.equals("AC")) {
+                calc.clearAll();
                 display.updateDisplay(calc.getResult());
+            } else if (c.equals("CE")) {
+                if (!calc.getCurrent().equals("0")) {
+                    calc.clearEntry();
+                    display.updateDisplay(calc.getCurrent());
+                }
             } else if (c.equals("+/-")) {
                 calc.changeSigns();
                 display.updateDisplay(calc.getResult());
+            } else if (c.equals("<-")) {
+                if(calc.getCurrent() != "0" && calc.getCurrent() != ""){
+                    calc.deleteFromCurrent();
+                    display.updateDisplay(calc.getCurrent());
+                }
             } else {
                 System.out.println("is weird");
             }
@@ -74,6 +84,6 @@ public class CalculatorWindow extends JFrame {
 
     public static void main(String[] args) {
         new CalculatorWindow();
-    }
+         }
 
 }
