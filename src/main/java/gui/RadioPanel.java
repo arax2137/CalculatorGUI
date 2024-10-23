@@ -10,7 +10,7 @@ public class RadioPanel extends JPanel implements ActionListener {
     private JRadioButton on;
     private JRadioButton off;
     ButtonGroup bg;
-    public static final String PRESSED = "pressed";
+    public final String PRESSED = "pressed";
     private boolean enabled = false;
 
 

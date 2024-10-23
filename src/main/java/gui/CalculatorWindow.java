@@ -4,10 +4,6 @@ import service.CalculatorService;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 public class CalculatorWindow extends JFrame {
 
@@ -26,6 +22,8 @@ public class CalculatorWindow extends JFrame {
         add(radioPanel, BorderLayout.CENTER);
         add(display, BorderLayout.NORTH);
 
+
+
         radioPanel.addPropertyChangeListener(radioPanel.PRESSED, evt -> {
             if (radioPanel.getEnabled()) {
                 buttonPanel.enableButtons();
@@ -40,18 +38,28 @@ public class CalculatorWindow extends JFrame {
 
 
         calc = new CalculatorService();
-
+        display.updateDisplay(calc.getCurrent());
         buttonPanel.addPropertyChangeListener(buttonPanel.PRESSED, evt -> {
             String c = buttonPanel.getCharacter();
 
-            if(c.matches("[0-9]")){
+            if(c.matches("[0-9]") || c.charAt(0) == '.'){
                 calc.addToCurrent(c.charAt(0));
                 display.updateDisplay(calc.getCurrent());
             } else if (c.matches("[+/*-]")) {
                 calc.startOperation(c.charAt(0));
-                display.updateDisplay(calc.getCurrent());
+                display.updateDisplay(calc.getResult());
+            } else if (c.charAt(0) =='√') {
+                calc.startOperation(c.charAt(0));
+                calc.equals();
+                display.updateDisplay(calc.getResult());
             } else if (c.charAt(0)=='=') {
                 calc.equals();
+                display.updateDisplay(calc.getResult());
+            } else if (c.equals("CE")) {
+                calc.clear();
+                display.updateDisplay(calc.getResult());
+            } else if (c.equals("+/-")) {
+                calc.changeSigns();
                 display.updateDisplay(calc.getResult());
             } else {
                 System.out.println("is weird");
@@ -60,17 +68,6 @@ public class CalculatorWindow extends JFrame {
 
 
         });
-
-
-
-
-
-
-
-
-
-
-
 
         setVisible(true);
     }

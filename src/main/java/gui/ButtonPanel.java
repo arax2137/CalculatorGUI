@@ -47,7 +47,7 @@ public class ButtonPanel extends JPanel implements ActionListener {
         mminus = new JButton("M-");
         mrc = new JButton("MRC");
         ce = new JButton("CE");
-        ac = new JButton("ac");
+        ac = new JButton("AC");
         back = new JButton("<-");
         coma = new JButton(".");
         sign = new JButton("+/-");
