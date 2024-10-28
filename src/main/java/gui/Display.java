@@ -10,6 +10,7 @@ public class Display extends JPanel {
 
     public Display() {
         fontSize = 40;
+        setLayout(new GridLayout());
         textField = new JLabel("-", SwingConstants.RIGHT);
         textField.setFont(new Font("Segoe UI", Font.BOLD, fontSize));
 

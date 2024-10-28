@@ -16,15 +16,39 @@ public class CalculatorWindow extends JFrame {
 
     public CalculatorWindow() {
         super("Calculator");
-        setLayout(new BorderLayout());
+        //setLayout(new BorderLayout());
+        setLayout(new GridBagLayout());
 
         ButtonPanel buttonPanel = new ButtonPanel();
         RadioPanel radioPanel = new RadioPanel();
         Display display = new Display();
 
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1;
+        gbc.gridwidth = gbc.REMAINDER;
+
+        gbc.weighty = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        add(display, gbc);
+
+        gbc.weighty = 0;
+        gbc.gridy = 1;
+        add(radioPanel, gbc);
+
+        gbc.weighty = 1;
+        gbc.gridy = 2;
+        add(buttonPanel, gbc);
+
+
+
+
+
+/*
         add(buttonPanel, BorderLayout.SOUTH);
         add(radioPanel, BorderLayout.CENTER);
-        add(display, BorderLayout.NORTH);
+        add(display, BorderLayout.NORTH);*/
 
 
 
@@ -39,9 +63,9 @@ public class CalculatorWindow extends JFrame {
                 display.updateDisplay("-");
             }
         });
-        setSize(400,550);
-        setMinimumSize(new Dimension(400,550));
-        setResizable(false);
+        setSize(420,550);
+        setMinimumSize(new Dimension(420,550));
+        setResizable(true);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 

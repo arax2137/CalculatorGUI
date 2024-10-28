@@ -23,18 +23,21 @@ public class ButtonPanel extends JPanel implements ActionListener {
     private JButton back;
     private JButton coma;
     private JButton sign;
+    JPanel[][] filler;
 
     private String character;
 
     public static final String PRESSED = "pressed";
 
     public ButtonPanel() {
-        GridLayout grid = new GridLayout(5,5);
+        GridLayout grid = new GridLayout(5,5,1,1);
         setLayout(grid);
         setPreferredSize(new Dimension(400,400));
-        grid.setHgap(0);
-        grid.setVgap(0);
-        setBorder(BorderFactory.createEmptyBorder(0,0,5,0));
+
+        Font font = new Font("Segoe UI", Font.PLAIN, 20);
+
+
+        setBorder(BorderFactory.createEmptyBorder(5,0,5,0));
 
         numberButtons = new JButton[10];
         add = new JButton("+");
@@ -53,10 +56,11 @@ public class ButtonPanel extends JPanel implements ActionListener {
         coma = new JButton(".");
         sign = new JButton("+/-");
 
-        JPanel[][] filler = new JPanel[5][5];
+        filler = new JPanel[5][5];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5;  j++){
                 filler[i][j] = new JPanel();
+                filler[i][j].setLayout(new GridLayout());
                 add(filler[i][j]);
             }
         }
@@ -88,30 +92,16 @@ public class ButtonPanel extends JPanel implements ActionListener {
             JPanel panel = (JPanel) c;
             JButton button = (JButton) panel.getComponents()[0];
             button.addActionListener(this);
-        }
-
-        disableButtons();
-
-        for(Component c : getComponents()){
-            JPanel panel = (JPanel) c;
-            JButton button = (JButton) panel.getComponents()[0];
-            button.setPreferredSize(new Dimension(74,80));
-
+            button.setFocusable(false);
+            button.setFont(font);
             if (!button.getText().matches("[0-9]")) {
                 button.setBackground(new Color(51, 51, 51));
             } else {
                 button.setBackground(new Color(61,61,61));
             }
-
-
-
-            //button.setBackground(new Color(120,133,255));
-
         }
 
-
-
-
+        disableButtons();
 
     }
 
