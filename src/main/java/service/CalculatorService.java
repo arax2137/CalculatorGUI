@@ -64,6 +64,13 @@ public class CalculatorService {
         current = "";
     }
 
+    public void percent(){
+        current = Double.toString(Double.parseDouble(current)/100);
+        if (current.endsWith(".0")) {
+            current = result.substring(0, result.length() - 2);
+        }
+    }
+
     public void clearAll(){
         result = "0";
         current = "0";

@@ -1,5 +1,9 @@
 package gui;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import service.CalculatorService;
 
 import javax.swing.*;
@@ -28,17 +32,20 @@ public class CalculatorWindow extends JFrame {
             if (radioPanel.getEnabled()) {
                 buttonPanel.enableButtons();
                 System.out.println("on");
+                display.updateDisplay("0");
             } else {
                 buttonPanel.disableButtons();
                 System.out.println("off");
+                display.updateDisplay("");
             }
         });
-        setSize(400,500);
+        setSize(400,550);
+        setMinimumSize(new Dimension(400,550));
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 
         calc = new CalculatorService();
-        display.updateDisplay(calc.getCurrent());
         buttonPanel.addPropertyChangeListener(buttonPanel.PRESSED, evt -> {
             String c = buttonPanel.getCharacter();
 
@@ -71,6 +78,11 @@ public class CalculatorWindow extends JFrame {
                     calc.deleteFromCurrent();
                     display.updateDisplay(calc.getCurrent());
                 }
+            } else if (c.equals("%")) {
+                if(calc.getCurrent() != "0" && calc.getCurrent() != "") {
+                    calc.percent();
+                    display.updateDisplay(calc.getCurrent());
+                }
             } else {
                 System.out.println("is weird");
             }
@@ -83,7 +95,13 @@ public class CalculatorWindow extends JFrame {
     }
 
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(new FlatMacDarkLaf());
+        } catch (Exception e) {
+            System.err.println("Exception during setting LAF");;
+        }
+
         new CalculatorWindow();
-         }
+    }
 
 }

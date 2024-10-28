@@ -80,8 +80,8 @@ public class ButtonPanel extends JPanel implements ActionListener {
         numberButtons[0] = new JButton("0");
         filler[4][1].add(numberButtons[0]);
         filler[4][2].add(coma);
-        filler[4][3].add(equals);
-        filler[4][4].add(add);
+        filler[4][3].add(add);
+        filler[4][4].add(equals);
 
         for(Component c : getComponents()){
             JPanel panel = (JPanel) c;
@@ -90,6 +90,23 @@ public class ButtonPanel extends JPanel implements ActionListener {
         }
 
         disableButtons();
+
+        for(Component c : getComponents()){
+            JPanel panel = (JPanel) c;
+            JButton button = (JButton) panel.getComponents()[0];
+            button.setPreferredSize(new Dimension(74,80));
+
+            if (!button.getText().matches("[0-9]")) {
+                button.setBackground(new Color(51, 51, 51));
+            } else {
+                button.setBackground(new Color(61,61,61));
+            }
+
+
+
+            //button.setBackground(new Color(120,133,255));
+
+        }
 
 
 
