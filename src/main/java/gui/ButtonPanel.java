@@ -34,6 +34,7 @@ public class ButtonPanel extends JPanel implements ActionListener {
         setPreferredSize(new Dimension(400,400));
         grid.setHgap(0);
         grid.setVgap(0);
+        setBorder(BorderFactory.createEmptyBorder(0,0,5,0));
 
         numberButtons = new JButton[10];
         add = new JButton("+");

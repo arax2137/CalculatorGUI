@@ -36,11 +36,12 @@ public class CalculatorWindow extends JFrame {
             } else {
                 buttonPanel.disableButtons();
                 System.out.println("off");
-                display.updateDisplay("");
+                display.updateDisplay("-");
             }
         });
         setSize(400,550);
         setMinimumSize(new Dimension(400,550));
+        setResizable(false);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
