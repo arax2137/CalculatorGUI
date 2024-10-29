@@ -3,6 +3,7 @@ package service;
 public class CalculatorService {
     private String result;
     private String current;
+    private String memory;
     private char operator;
 
     public CalculatorService() {
@@ -71,14 +72,27 @@ public class CalculatorService {
         }
     }
 
+    public void memoryAdd(){
+        memory = result;
+    }
+    public void memoryDelete(){
+        memory = "0";
+    }
+    public void memoryRecall(){
+        current = memory;
+    }
+
     public void clearAll(){
         result = "0";
         current = "0";
         operator = '+';
+        memory = "0";
     }
 
     public void clearEntry(){
         current = "0";
+        result = "0";
+        operator = '+';
     }
 
 

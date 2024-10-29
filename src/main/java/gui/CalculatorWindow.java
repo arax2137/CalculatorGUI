@@ -41,17 +41,6 @@ public class CalculatorWindow extends JFrame {
         gbc.gridy = 2;
         add(buttonPanel, gbc);
 
-
-
-
-
-/*
-        add(buttonPanel, BorderLayout.SOUTH);
-        add(radioPanel, BorderLayout.CENTER);
-        add(display, BorderLayout.NORTH);*/
-
-
-
         radioPanel.addPropertyChangeListener(radioPanel.PRESSED, evt -> {
             if (radioPanel.getEnabled()) {
                 buttonPanel.enableButtons();
@@ -108,9 +97,16 @@ public class CalculatorWindow extends JFrame {
                     calc.percent();
                     display.updateDisplay(calc.getCurrent());
                 }
-            } else {
-                System.out.println("is weird");
+            } else if(c.equals("MRC")){
+                calc.memoryRecall();
+                display.updateDisplay(calc.getCurrent());
+            } else if(c.equals("M-")){
+                calc.memoryDelete();
+            } else if(c.equals("M+")){
+                calc.memoryAdd();
             }
+
+
 
 
 
